@@ -4,7 +4,7 @@ set -eu
 IMAGE=shardlabs/cairo-cli
 TAG="${CAIRO_VERSION}${TAG_SUFFIX}"
 
-# docker login --username "$DOCKER_USER" --password "$DOCKER_PASS"
+docker login --username "$DOCKER_USER" --password "$DOCKER_PASS"
 
 # get requirements
 REQUIREMENTS_URL="https://raw.githubusercontent.com/starkware-libs/cairo-lang/v$CAIRO_PRE_RELEASE_VERSION/scripts/requirements.txt"
