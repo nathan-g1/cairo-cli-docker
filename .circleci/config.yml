@@ -42,6 +42,7 @@ jobs:
             DOCKER_PASS: "1@AdminPasswordQ34D"
 
 workflows:
+  version: 2
   build_push:
     jobs:
       # - build_push:
