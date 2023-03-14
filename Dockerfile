@@ -29,7 +29,9 @@ FROM rust:1.67-alpine
 RUN apk add git bash --no-cache musl-dev && \
     git clone https://github.com/starkware-libs/cairo.git
 
-RUN rustup override set stable && rustup component add rustfmt && rustup update
+RUN rustup override set stable && \
+    rustup component add rustfmt --toolchain nightly-2022-11-03-aarch64-unknown-linux-musl && \
+    rustup update
 
 WORKDIR /cairo
 
