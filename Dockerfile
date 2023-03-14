@@ -22,3 +22,21 @@ COPY --from=builder /wheels /wheels
 RUN pip install --no-cache /wheels/*
 
 RUN rm -rf /wheels
+
+FROM rust:1.67-alpine
+
+# Install cairo1 compiler
+RUN apk add git bash --no-cache musl-dev && \
+    git clone https://github.com/starkware-libs/cairo.git
+
+RUN rustup override set stable && rustup component add rustfmt && rustup update
+
+WORKDIR /cairo
+
+COPY script.sh /cairo/script.sh
+
+RUN chmod 755 /cairo/script.sh && bash /cairo/script.sh
+
+RUN git config --global http.postBuffer 524288000
+
+RUN cargo test

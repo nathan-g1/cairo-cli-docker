@@ -21,7 +21,8 @@ jobs:
           command: ./build_and_push.sh
           environment:
             TAG_SUFFIX: ""
-            CAIRO_VERSION: 0.10.3
+            CAIRO_VERSION: 0.11.0a0
+            CAIRO_PRE_RELEASE_VERSION: 0.11.0-pre # Used for requirements.txt. Copy CAIRO_VERSION if not a pre-release
             OZ_VERSION: 0.5.1
   build_push_arm:
     machine:
@@ -34,7 +35,8 @@ jobs:
           command: ./build_and_push.sh
           environment:
             TAG_SUFFIX: -arm
-            CAIRO_VERSION: 0.10.3
+            CAIRO_VERSION: 0.11.0a0
+            CAIRO_PRE_RELEASE_VERSION: 0.11.0-pre
             OZ_VERSION: 0.5.1
 
 workflows:
