@@ -28,6 +28,7 @@ docker build \
 docker images
 docker run "$TAGGED_IMAGE" starknet-compile --version
 docker run "$TAGGED_IMAGE" starknet --version
+
 # push
-# docker push "$TAGGED_IMAGE"
-# docker push "$LATEST_IMAGE"
+docker push "$TAGGED_IMAGE"
+docker push "$LATEST_IMAGE"
