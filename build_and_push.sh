@@ -25,9 +25,9 @@ docker build \
     .
 
 # verify
+docker images
 docker run "$TAGGED_IMAGE" starknet-compile --version
 docker run "$TAGGED_IMAGE" starknet --version
-docker images
 # push
 # docker push "$TAGGED_IMAGE"
 # docker push "$LATEST_IMAGE"
