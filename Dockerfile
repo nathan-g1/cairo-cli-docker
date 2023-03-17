@@ -6,8 +6,8 @@ COPY script.sh /script.sh
 RUN apk add git bash --no-cache musl-dev && \
     git clone https://github.com/starkware-libs/cairo.git && \
     cd cairo && \
-    rustup toolchain install nightly-2022-11-03-x86_64-unknown-linux-musl && \
-    rustup component add rustfmt --toolchain nightly-2022-11-03-x86_64-unknown-linux-musl && \
+    rustup toolchain install nightly-2022-11-03-aarch64-unknown-linux-musl && \
+    rustup component add rustfmt --toolchain nightly-2022-11-03-aarch64-unknown-linux-musl && \
     git config --global http.postBuffer 524288000 && \
     chmod 755 /script.sh && \
     bash /script.sh && \
