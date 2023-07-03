@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eu
 
+echo "OS: $OSTYPE"
+echo "Architecture: $(uname -p)"
+
 IMAGE=shardlabs/cairo-cli
 TAG="${CAIRO_VERSION}${TAG_SUFFIX}"
 
