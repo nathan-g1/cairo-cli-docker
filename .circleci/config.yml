@@ -1,13 +1,5 @@
 version: 2
 
-aliases:
-  - &on_master
-    context: spaceshard
-    filters:
-      branches:
-        only:
-          - master
-
 jobs:
   build_push:
     docker:
@@ -21,10 +13,9 @@ jobs:
           command: ./build_and_push.sh
           environment:
             TAG_SUFFIX: ""
-            CAIRO_VERSION: "v0.11.2"
+            CAIRO_VERSION: 0.11.2
             OZ_VERSION: 0.5.1
             CAIRO_COMPILER_TARGET_TAG: "v1.1.0"
-            CAIRO_COMPILER_ASSET_NAME: "release-x86_64-unknown-linux-musl.tar.gz"
             SCARB_VERSION: 0.4.0
   build_push_arm:
     machine:
@@ -37,17 +28,14 @@ jobs:
           command: ./build_and_push.sh
           environment:
             TAG_SUFFIX: -arm
-            CAIRO_VERSION: "v0.11.2"
+            CAIRO_VERSION: 0.11.2
             OZ_VERSION: 0.5.1
             CAIRO_COMPILER_TARGET_TAG: "v1.1.0"
-            CAIRO_COMPILER_ASSET_NAME: "release-x86_64-unknown-linux-musl.tar.gz"
             SCARB_VERSION: 0.4.0
 
 workflows:
   version: 2
   build_push:
     jobs:
-      - build_push:
-          <<: *on_master
-      - build_push_arm:
-          <<: *on_master
+      - build_push
+      - build_push_arm
