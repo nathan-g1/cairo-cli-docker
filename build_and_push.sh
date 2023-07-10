@@ -38,7 +38,7 @@ mkdir -p "$cairo_0_output"
 
 # compile cairo 0 contract
 docker run -v "$dir":"$dir" "$TAGGED_IMAGE" \
-    starknet-compile-deprecated "$dir/$cairo_0_contract" --abi "$cairo_0_output/contract_abi.json" --output "$cairo_0_output/contract.json"
+    starknet-compile-deprecated "$dir/$cairo_0_contract" --output "$cairo_0_output/contract.json"
 
 # compile cairo 1 contract
 docker run -v "$dir":"$dir" "$TAGGED_IMAGE" \
