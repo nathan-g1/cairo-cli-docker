@@ -38,7 +38,7 @@ mkdir -p "$cairo_0_output"
 
 # compile cairo 0 contract
 docker run -v "$dir":"$dir" "$TAGGED_IMAGE" \
-    starknet-compile-deprecated "$dir/$cairo_0_contract" --output "$cairo_0_output/contract.json"
+    starknet-compile-deprecated "$dir/$cairo_0_contract"
 
 # compile cairo 1 contract
 docker run -v "$dir":"$dir" "$TAGGED_IMAGE" \
@@ -46,11 +46,6 @@ docker run -v "$dir":"$dir" "$TAGGED_IMAGE" \
     && /usr/local/bin/target/release/starknet-sierra-compile "$cairo_1_output/contract1.json" "$cairo_1_output/contract1.casm""
 
 # verify compilation
-if [[ ! -f "$cairo_0_output/contract.json"  ||  ! -f "$cairo_0_output/contract_abi.json" ]]; then
-    echo "One or more Cairo 0 files not found!"
-    exit 1
-fi
-
 if [[ ! -f "$cairo_1_output/contract1.json" || ! -f "$cairo_1_output/contract1.casm" ]]; then
     echo "One or more Cairo 1 files not found!"
     exit 1
